@@ -31,14 +31,14 @@ def DecodeEventBasedRawData(file, data, wellID, startFrame, numFrames):
         toExclusive = int.from_bytes(binaryData[pos:pos + 8], byteorder='little', signed=True)
         pos += 8
         rangeDataPos = pos
-    for j in range(fromInclusive, toExclusive):
-        if j >= startFrame + numFrames:
-            break
-        if j >= startFrame:
-            data[chIdx][j - startFrame] = int.from_bytes(
-            binaryData[rangeDataPos:rangeDataPos + 2], byteorder='little', signed=True)
-            rangeDataPos += 2
-            pos += (toExclusive - fromInclusive) * 2
+        for j in range(fromInclusive, toExclusive):
+            if j >= startFrame + numFrames:
+                break
+            if j >= startFrame:
+                data[chIdx][j - startFrame] = int.from_bytes(
+                binaryData[rangeDataPos:rangeDataPos + 2], byteorder='little', signed=True)
+                rangeDataPos += 2
+                pos += (toExclusive - fromInclusive) * 2
 
 def GenerateSyntheticNoise(file, data, wellID, startFrame, numFrames):
     # collect the TOCs
