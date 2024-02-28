@@ -82,10 +82,10 @@ the linear index of the channel it has been recorded on.
 
 • SpikeForms: a 1-dimensional array of 16-bit Integers of length M = N x W, where N is the
 number of spikes detected, and W is the number of frames stored for each waveform. It
-3Brain - File Format Documentation For BRW v4.x, BXR v3.x and BCMP v1.x 21 of 23
-contains the waveforms for each detected spike, collapsed into one dimension. It has a 32-bit
-Integer attribute Wavelength indicating the length, in frames, of the waveforms (W). From
-Root Version 301, it has a 32-bit Integer attribute WaveTimeOffset indicating the position, in
+## 3Brain - File Format Documentation For BRW v4.x, BXR v3.x and BCMP v1.x 21 of 23
+## contains the waveforms for each detected spike, collapsed into one dimension.
+## It has a 32-bit Integer attribute Wavelength indicating the length, in frames, of the waveforms (W). 
+From Root Version 301, it has a 32-bit Integer attribute WaveTimeOffset indicating the position, in
 frames, of the detected peak in the wave, which corresponds to the action potential’s peak.
 To get the position of the waveform (event’s property) of a given spike, the value found in
 SpikeTOC must be multiplied by W.
