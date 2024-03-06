@@ -46,7 +46,7 @@ def DecodeEventBasedRawData(file, data, wellID, startFrame, numFrames):
                 spikeData[rangeDataPos:rangeDataPos + 2], byteorder='little', signed=True)
                 rangeDataPos += 2
                 pos += (toExclusive - fromInclusive) * 2
-
+#this is the section we will be using
 def GenerateSyntheticNoise(file, data, wellID, startFrame, numFrames):
     # collect the TOCs
     toc = np.array(file['TOC'])
