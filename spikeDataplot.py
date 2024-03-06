@@ -3,6 +3,27 @@ import matplotlib.pyplot as plt
 import h5py
 #
 #  variables
+# add 
+#def calculate_conversion_factor(max_analog_value, min_analog_value, max_digital_value, min_digital_value):
+  #  return  (max_analog_value - min_analog_value) / float((max_digital_value - min_digital_value))
+def calculate_conversion_factor(MaxAnalogValue, min_analog_value, max_digital_value, min_digital_value):
+    return (max_analog_value - min_analog_value) / (max_digital_value - min_digital_value)
+
+def calculate_offset_value(min_analog_value, conversion_factor, min_digital_value):
+    return min_analog_value - (conversion_factor * min_digital_value)
+
+def calculate_analog_value(digital_value, offset_value, conversion_factor):
+    return (digital_value * conversion_factor) + offset_value
+
+    file = "2016-9-30T14:47:38Z-Ds18b     20-DataLoggingSystem.hdf"   # replace with your filename
+    f = h5py.File(file,'r')     # open the HDF  
+
+
+
+
+         
+conversion_factor = calculate_conversion_factor(max_analog_value, min_analog_value, max_digital_value, min_digital_value)
+offset_value = calculate_offset_value(min_analog_value, conversion_factor, min_digital_value)
 
 def DecodeEventBasedRawData(file, data, wellID, startFrame, numFrames):
 # collect the TOCs
@@ -47,6 +68,7 @@ def DecodeEventBasedRawData(file, data, wellID, startFrame, numFrames):
                 rangeDataPos += 2
                 pos += (toExclusive - fromInclusive) * 2
 #this is the section we will be using
+#def 
 def GenerateSyntheticNoise(file, data, wellID, startFrame, numFrames):
     # collect the TOCs
     toc = np.array(file['TOC'])
